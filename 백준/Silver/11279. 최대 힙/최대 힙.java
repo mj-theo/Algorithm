@@ -1,26 +1,23 @@
-import java.util.Collections;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.PriorityQueue;
-import java.util.Scanner;
 
-import static java.util.Collections.reverseOrder;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
-
-        for (int i = 0; i < n; i++) {
-            int x = sc.nextInt();
-            if(x==0){
+public class Main { // 최대힙 https://acmicpc.net/submit/11279
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> b-a);
+        for(int i = 0; i < N; i++){
+            int n = Integer.parseInt(br.readLine());
+            if(n==0){
                 if(pq.isEmpty()){
                     System.out.println(0);
-                }else {
-                    System.out.println(pq.peek());
-                    pq.poll();
+                }else{
+                    System.out.println(pq.poll());
                 }
             }else{
-                pq.offer(x);
+                pq.offer(n);
             }
         }
     }
